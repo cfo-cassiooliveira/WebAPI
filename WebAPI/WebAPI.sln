@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI.csproj", "{C430A106-F8BA-4F7E-9CBF-344C798F9202}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConectionDB", "..\ConectionDB\ConectionDB.csproj", "{FED1AA87-D777-40F1-A9CD-5DB0973AC590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{2CA9C0C7-9FE9-48F4-A979-5F60CB974A78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C430A106-F8BA-4F7E-9CBF-344C798F9202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C430A106-F8BA-4F7E-9CBF-344C798F9202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C430A106-F8BA-4F7E-9CBF-344C798F9202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C430A106-F8BA-4F7E-9CBF-344C798F9202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED1AA87-D777-40F1-A9CD-5DB0973AC590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED1AA87-D777-40F1-A9CD-5DB0973AC590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED1AA87-D777-40F1-A9CD-5DB0973AC590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED1AA87-D777-40F1-A9CD-5DB0973AC590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA9C0C7-9FE9-48F4-A979-5F60CB974A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA9C0C7-9FE9-48F4-A979-5F60CB974A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA9C0C7-9FE9-48F4-A979-5F60CB974A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA9C0C7-9FE9-48F4-A979-5F60CB974A78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70268429-B5EC-4030-9A64-F88012D956FD}
+	EndGlobalSection
+EndGlobal
