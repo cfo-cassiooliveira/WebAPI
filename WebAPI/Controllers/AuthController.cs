@@ -1,11 +1,10 @@
 ﻿using ConectionDB;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Security;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/login")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -15,18 +14,21 @@ namespace WebAPI.Controllers
             _context = context;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public IActionResult Login(string User, string Senha)
         {
-            var user = _context.Usuario.FirstOrDefault(x => x.User == User && x.Senha == Senha);
-            if (user == null)
+            User = Key.Base64Encode(User);
+            Senha = Key.Base64Encode(Senha);
+
+            var usuario = _context.Usuario.FirstOrDefault(x => x.User == User && x.Senha == Senha);
+            if (usuario == null)
             {
                 return Unauthorized("Usuário ou senha inválidos");
             }
             else
             {
-                var token = TokenService.GenerateToken(user);
-                return Ok(new { user = user, token = token });
+                var token = TokenService.GenerateToken(usuario);
+                return Ok(new { user = usuario, token = token });
             }
         }
     }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ConectionDB;
 using Domain.Entidades;
 using Microsoft.AspNetCore.Authorization;
+using WebAPI.Security;
 
 namespace WebAPI.Controllers
 {
@@ -52,12 +53,12 @@ namespace WebAPI.Controllers
             }
             else
             {
-                tUsuario.User = usuario.User;
+                tUsuario.User = Key.Base64Encode(usuario.User);
+                tUsuario.Senha = Key.Base64Encode(usuario.Senha);
                 tUsuario.Nome = usuario.Nome;
-                tUsuario.Senha = usuario.Senha;
                 tUsuario.IdTipoUsuario = usuario.IdTipoUsuario;
                 tUsuario.Ativo = usuario.Ativo;
-                tUsuario.DataAlteracao = usuario.DataAlteracao;
+                tUsuario.DataAlteracao = DateTime.Now;
             }
 
                 _context.Entry(tUsuario).State = EntityState.Modified;
@@ -79,27 +80,13 @@ namespace WebAPI.Controllers
         [Authorize]
         public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
         {
+            usuario.User = Key.Base64Encode(usuario.User);
+            usuario.Senha = Key.Base64Encode(usuario.Senha);
+
             _context.Usuario.Add(usuario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsuario", new { id = usuario.IdUsuario }, usuario);
-        }
-
-
-        [HttpDelete("{id}")]
-        [Authorize]
-        public async Task<IActionResult> DeleteUsuario(int id)
-        {
-            var usuario = await _context.Usuario.FindAsync(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-
-            _context.Usuario.Remove(usuario);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return CreatedAtAction("GetUsuario", new { nome = usuario.Nome }, usuario);
         }
     }
 }
